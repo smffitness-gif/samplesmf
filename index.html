@@ -1,62 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" href="img/smf logo (1).jpeg" style="background: transparent;">
-</head>
 
-<body>
-    <div class="top">
-        <nav>
-            <h1>SMF FITTNESS & SUPPLIMENTS</h1>
+    <!-- ✅ CORRECT VIEWPORT -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <label for="menu-toggle" class="menu-icon">☰</label>
+    <title>SMF Fitness & Supplements</title>
 
-            <input type="checkbox" id="menu-toggle">
-            <div class="menu">
-                <a href="index.html">Home</a>
-                <a href="products.html">SUPPLIMENTS</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </nav>
-    </div>
-    <center>
-        <div class="logo">
+    <link rel="icon" href="img/smf logo (1).jpeg">
 
-            <img src="img/smf logo (1).jpeg" alt="">
-
-            <br>
-        </div>
-    </CENTER>
-    <hr>
-
-    <CENTEr>
-        <h1>SOCIAL MEDIA</h1>
-        <div class="link">
-            <br>
-            <br>
-            <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==" class="fa fa-instagram">
-                <br>
-                <img src="img/Social=Instagram,Style=Original (1).svg" style="height: 25px;" alt=""> INSTAGRAM</a>
-            <hr>
-            <br>
-            <br>
-
-            <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==" class="fa fa-facebook">
-                <br>
-                <img src="img/Social=Facebook,Style=Original (1).svg" style="height: 25px;" alt="">FACEBOOK</a>
-            <br>
-
-            <br>
-            <hr>
-            <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==" class="fa fa-whatsapp">
-                <br>
-                <img src="img/Social=WhatsApp,Style=Original (1).svg" style="height: 25px;" alt="">WHATSAPP</a>
-        </div>
-    </center>
-    <script src="smf.js"></script>
     <style>
         /* ===== GLOBAL ===== */
         body {
@@ -64,24 +18,29 @@
             color: white;
             margin: 0;
             font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* ===== NAVBAR ===== */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: relative;
             padding: 15px;
             background: black;
+            text-align: center;
         }
 
         nav h1 {
-            font-size: 20px;
             margin: 0;
+            font-size: 22px;
         }
 
         /* ===== MENU ICON ===== */
         .menu-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
             font-size: 28px;
             cursor: pointer;
             display: none;
@@ -90,7 +49,9 @@
         /* ===== MENU ===== */
         .menu {
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 10px;
         }
 
         .menu a {
@@ -100,65 +61,68 @@
         }
 
         /* ===== LOGO ===== */
+        .logo {
+            text-align: center;
+            margin-top: 30px;
+        }
+
         .logo img {
-            width: 120px;
-            margin-top: 10px;
+            width: 300px;
+            /* ✅ BIG LOGO */
+            max-width: 90%;
+            /* prevents overflow */
         }
 
         /* ===== SOCIAL LINKS ===== */
         .link {
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background: #111;
         }
 
         .link a {
-            display: block;
-            padding: 15px;
-            margin: 10px 0;
-            background: #111;
-            border-radius: 10px;
+            text-align: center;
             color: white;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .link img {
-            height: 20px;
-            margin-bottom: 5px;
+            display: block;
+            margin: auto;
+            height: 30px;
         }
 
-        /* ===== HAMBURGER LOGIC ===== */
+        /* ===== HAMBURGER ===== */
         #menu-toggle {
             display: none;
         }
 
-        /* ===== MOBILE RESPONSIVE ===== */
+        /* ===== MOBILE ===== */
         @media (max-width: 768px) {
 
             nav h1 {
                 font-size: 16px;
             }
 
-            /* Show hamburger */
             .menu-icon {
                 display: block;
             }
 
-            /* Hide menu by default */
             .menu {
                 display: none;
                 flex-direction: column;
                 background: #111;
                 position: absolute;
                 top: 60px;
-                right: 0;
+                right: 10px;
                 width: 200px;
-                text-align: center;
                 border-radius: 10px;
             }
 
-            /* Show when checked */
             #menu-toggle:checked+.menu {
                 display: flex;
             }
@@ -168,30 +132,81 @@
                 border-bottom: 1px solid #333;
             }
 
-            /* Logo smaller */
+            /* Logo smaller on tablet */
             .logo img {
-                width: 90px;
+                width: 220px;
             }
 
-            /* Social buttons */
-            .link a {
-                font-size: 14px;
-                padding: 12px;
+            .link {
+                gap: 15px;
+            }
+
+            .link img {
+                height: 25px;
             }
         }
 
         /* ===== SMALL MOBILE ===== */
         @media (max-width: 480px) {
+
             nav h1 {
                 font-size: 14px;
             }
 
+            /* Logo smaller on mobile */
             .logo img {
-                width: 80px;
+                width: 180px;
+            }
+
+            .link {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
-    </head>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <h1>SMF FITNESS & SUPPLEMENTS</h1>
+
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <input type="checkbox" id="menu-toggle">
+
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="products.html">SUPPLEMENTS</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== LOGO ===== -->
+    <div class="logo">
+        <img src="img/smf logo (1).jpeg" alt="Logo">
+    </div>
+
+    <!-- ===== SOCIAL LINKS ===== -->
+    <div class="link">
+
+        <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==">
+            <img src="img/Social=Instagram,Style=Original (1).svg">
+            INSTAGRAM
+        </a>
+
+        <a href="#">
+            <img src="img/Social=Facebook,Style=Original (1).svg">
+            FACEBOOK
+        </a>
+
+        <a href="#">
+            <img src="img/Social=WhatsApp,Style=Original (1).svg">
+            WHATSAPP
+        </a>
+
+    </div>
+
 </body>
 
 </html>
