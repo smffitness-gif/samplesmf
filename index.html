@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- ✅ IMPORTANT FIX -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SMF Fitness & Supplements</title>
+
+    <style>
+        /* ===== BODY ===== */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f0f0f;
+            color: white;
+            text-align: center;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #111;
+            padding: 15px;
+        }
+
+        /* ===== CATEGORY LIST ===== */
+        .list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .list button {
+            padding: 15px;
+            background: #ff6600;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .list button:hover {
+            background: #00c853;
+        }
+
+        /* ===== GRID ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            padding: 15px;
+        }
+
+        /* ===== PRODUCT CARD ===== */
+        .product-card {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* ===== DETAIL ===== */
+        .product-detail {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 350px;
+            margin: 20px auto;
+        }
+
+        .product-detail img {
+            width: 100%;
+        }
+
+        /* ===== INPUT ===== */
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            background: #ff6600;
+            border: none;
+            padding: 10px;
+            color: white;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #00c853;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <h2>SMF Fitness & Supplements</h2>
+    </nav>
+
+    <!-- ===== CATEGORY ===== -->
+    <div id="home" class="list">
+        <button onclick="showProducts('whey')">Whey</button>
+        <button onclick="showProducts('creatine')">Creatine</button>
+        <button onclick="showProducts('pre')">Pre Workout</button>
+        <button onclick="showProducts('bcaa')">BCAA</button>
+        <button onclick="showProducts('eaa')">EAA</button>
+        <button onclick="showProducts('gainer')">Mass Gainer</button>
+    </div>
+
+    <!-- ===== PRODUCTS ===== -->
+    <div id="grid" class="grid" style="display:none;"></div>
+
+    <!-- ===== DETAIL ===== -->
+    <div id="detail" class="product-detail" style="display:none;">
+        <img id="pimg">
+        <h3 id="pname"></h3>
+        <p id="pprice"></p>
+        <ul id="pdesc"></ul>
+        <button onclick="showOrder()">Order</button>
+        <button onclick="backHome()">⬅ Back</button>
+    </div>
+
+    <!-- ===== ORDER ===== -->
+    <div id="order" class="product-detail" style="display:none;">
+        <h3>Order Form</h3>
+        <img id="oimg">
+        <h4 id="oname"></h4>
+        <p id="oprice"></p>
+        <input id="name" placeholder="Name">
+        <input id="phone" placeholder="Phone">
+        <input id="email" placeholder="Email">
+        <button onclick="orderNow()">Submit</button>
+        <button onclick="backDetail()">⬅ Back</button>
+    </div>
+
+    <script>
+
+        /* ===== GENERATE PRODUCTS ===== */
+        function generate(name, folder) {
+            const arr = [];
+            for (let i = 1; i <= 20; i++) {
+                arr.push({
+                    name: name + " " + i,
+                    price: 1000 + i * 100,
+                    img: "img/" + folder + i + ".jpg",
+                    desc: ["High Quality", "Muscle Growth", "Energy Boost"]
+                });
+            }
+            return arr;
+        }
+
+        const data = {
+            whey: generate("Whey", "whey"),
+            creatine: generate("Creatine", "creatine"),
+            pre: generate("Pre", "pre"),
+            bcaa: generate("BCAA", "bcaa"),
+            eaa: generate("EAA", "eaa"),
+            gainer: generate("Gainer", "gainer")
+        };
+
+        let current = [];
+
+        /* ===== SHOW PRODUCTS ===== */
+        function showProducts(cat) {
+            document.getElementById("home").style.display = "none";
+            const grid = document.getElementById("grid");
+            grid.style.display = "grid";
+            grid.innerHTML = "";
+
+            current = data[cat];
+
+            current.forEach((p, i) => {
+                const div = document.createElement("div");
+                div.className = "product-card";
+                div.innerHTML = `
+            <img src="${p.img}">
+            <h4>${p.name}</h4>
+            <p>₹${p.price}</p>
+        `;
+                div.onclick = () => showDetail(i);
+                grid.appendChild(div);
+            });
+        }
+
+        /* ===== DETAIL ===== */
+        let selected;
+
+        function showDetail(i) {
+            selected = current[i];
+
+            document.getElementById("grid").style.display = "none";
+            document.getElementById("detail").style.display = "block";
+
+            document.getElementById("pimg").src = selected.img;
+            document.getElementById("pname").innerText = selected.name;
+            document.getElementById("pprice").innerText = "₹" + selected.price;
+
+            const ul = document.getElementById("pdesc");
+            ul.innerHTML = "";
+            selected.desc.forEach(d => {
+                const li = document.createElement("li");
+                li.innerText = d;
+                ul.appendChild(li);
+            });
+        }
+
+        /* ===== ORDER ===== */
+        function showOrder() {
+            document.getElementById("detail").style.display = "none";
+            document.getElementById("order").style.display = "block";
+
+            document.getElementById("oimg").src = selected.img;
+            document.getElementById("oname").innerText = selected.name;
+            document.getElementById("oprice").innerText = "₹" + selected.price;
+        }
+
+        /* ===== WHATSAPP ===== */
+        function orderNow() {
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+
+            if (!name || !phone || !email) {
+                alert("Fill all fields!");
+                return;
+            }
+
+            const msg = `Order:%0AProduct: ${selected.name}%0APrice: ₹${selected.price}%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}`;
+
+            window.open(`https://api.whatsapp.com/send?phone=917339563621&text=${msg}`, "_blank");
+        }
+
+        /* ===== BACK ===== */
+        function backHome() {
+            document.getElementById("detail").style.display = "none";
+            document.getElementById("home").style.display = "grid";
+        }
+
+        function backDetail() {
+            document.getElementById("order").style.display = "none";
+            document.getElementById("detail").style.display = "block";
+        }
+
+    </script>
+
+</body>
+
+</html>
