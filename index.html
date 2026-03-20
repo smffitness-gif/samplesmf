@@ -1,294 +1,149 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- ✅ IMPORTANT FIX -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SMF Fitness & Supplements</title>
-
-    <style>
-        /* ===== BODY ===== */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f0f0f;
-            color: white;
-            text-align: center;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            background: #111;
-            padding: 15px;
-        }
-
-        /* ===== CATEGORY LIST ===== */
-        .list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            padding: 20px;
-        }
-
-        .list button {
-            padding: 15px;
-            background: #ff6600;
-            border: none;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .list button:hover {
-            background: #00c853;
-        }
-
-        /* ===== GRID ===== */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            padding: 15px;
-        }
-
-        /* ===== PRODUCT CARD ===== */
-        .product-card {
-            background: #1a1a1a;
-            padding: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        /* ===== DETAIL ===== */
-        .product-detail {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 350px;
-            margin: 20px auto;
-        }
-
-        .product-detail img {
-            width: 100%;
-        }
-
-        /* ===== INPUT ===== */
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        /* ===== BUTTON ===== */
-        button {
-            background: #ff6600;
-            border: none;
-            padding: 10px;
-            color: white;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background: #00c853;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .list {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .list {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="img/smf logo (1).jpeg" style="background: transparent;">
 </head>
 
 <body>
+    <div class="top">
+        <nav>
+            <h1>SMF FITTNESS & SUPPLIMENTS</h1>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <h2>SMF Fitness & Supplements</h2>
-    </nav>
+            <label for="menu-toggle" class="menu-icon">☰</label>
 
-    <!-- ===== CATEGORY ===== -->
-    <div id="home" class="list">
-        <button onclick="showProducts('whey')">Whey</button>
-        <button onclick="showProducts('creatine')">Creatine</button>
-        <button onclick="showProducts('pre')">Pre Workout</button>
-        <button onclick="showProducts('bcaa')">BCAA</button>
-        <button onclick="showProducts('eaa')">EAA</button>
-        <button onclick="showProducts('gainer')">Mass Gainer</button>
+            <input type="checkbox" id="menu-toggle">
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="products.html">SUPPLIMENTS</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
     </div>
+    <center>
+        <div class="logo">
 
-    <!-- ===== PRODUCTS ===== -->
-    <div id="grid" class="grid" style="display:none;"></div>
+            <img src="img/smf logo (1).jpeg" alt="">
 
-    <!-- ===== DETAIL ===== -->
-    <div id="detail" class="product-detail" style="display:none;">
-        <img id="pimg">
-        <h3 id="pname"></h3>
-        <p id="pprice"></p>
-        <ul id="pdesc"></ul>
-        <button onclick="showOrder()">Order</button>
-        <button onclick="backHome()">⬅ Back</button>
-    </div>
+            <br>
+        </div>
+    </CENTER>
+    <hr>
 
-    <!-- ===== ORDER ===== -->
-    <div id="order" class="product-detail" style="display:none;">
-        <h3>Order Form</h3>
-        <img id="oimg">
-        <h4 id="oname"></h4>
-        <p id="oprice"></p>
-        <input id="name" placeholder="Name">
-        <input id="phone" placeholder="Phone">
-        <input id="email" placeholder="Email">
-        <button onclick="orderNow()">Submit</button>
-        <button onclick="backDetail()">⬅ Back</button>
-    </div>
+    <CENTEr>
+        <h1>SOCIAL MEDIA</h1>
+        <div class="link">
+            <br>
+            <br>
+            <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==" class="fa fa-instagram">
+                <br>
+                <img src="img/Social=Instagram,Style=Original (1).svg" style="height: 25px;" alt=""> INSTAGRAM</a>
+            <hr>
+            <br>
+            <br>
 
-    <script>
+            <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==" class="fa fa-facebook">
+                <br>
+                <img src="img/Social=Facebook,Style=Original (1).svg" style="height: 25px;" alt="">FACEBOOK</a>
+            <br>
 
-        /* ===== GENERATE PRODUCTS ===== */
-        function generate(name, folder) {
-            const arr = [];
-            for (let i = 1; i <= 20; i++) {
-                arr.push({
-                    name: name + " " + i,
-                    price: 1000 + i * 100,
-                    img: "img/" + folder + i + ".jpg",
-                    desc: ["High Quality", "Muscle Growth", "Energy Boost"]
-                });
-            }
-            return arr;
+            <br>
+            <hr>
+            <a href="https://www.instagram.com/smf_501?igsh=MTAxa21xNTlyYWZqbQ==" class="fa fa-whatsapp">
+                <br>
+                <img src="img/Social=WhatsApp,Style=Original (1).svg" style="height: 25px;" alt="">WHATSAPP</a>
+        </div>
+    </center>
+    <script src="smf.js"></script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
 
-        const data = {
-            whey: generate("Whey", "whey"),
-            creatine: generate("Creatine", "creatine"),
-            pre: generate("Pre", "pre"),
-            bcaa: generate("BCAA", "bcaa"),
-            eaa: generate("EAA", "eaa"),
-            gainer: generate("Gainer", "gainer")
-        };
-
-        let current = [];
-
-        /* ===== SHOW PRODUCTS ===== */
-        function showProducts(cat) {
-            document.getElementById("home").style.display = "none";
-            const grid = document.getElementById("grid");
-            grid.style.display = "grid";
-            grid.innerHTML = "";
-
-            current = data[cat];
-
-            current.forEach((p, i) => {
-                const div = document.createElement("div");
-                div.className = "product-card";
-                div.innerHTML = `
-            <img src="${p.img}">
-            <h4>${p.name}</h4>
-            <p>₹${p.price}</p>
-        `;
-                div.onclick = () => showDetail(i);
-                grid.appendChild(div);
-            });
+        nav {
+            background-color: black;
+            color: aliceblue;
+            padding: 15px;
         }
 
-        /* ===== DETAIL ===== */
-        let selected;
-
-        function showDetail(i) {
-            selected = current[i];
-
-            document.getElementById("grid").style.display = "none";
-            document.getElementById("detail").style.display = "block";
-
-            document.getElementById("pimg").src = selected.img;
-            document.getElementById("pname").innerText = selected.name;
-            document.getElementById("pprice").innerText = "₹" + selected.price;
-
-            const ul = document.getElementById("pdesc");
-            ul.innerHTML = "";
-            selected.desc.forEach(d => {
-                const li = document.createElement("li");
-                li.innerText = d;
-                ul.appendChild(li);
-            });
+        li,
+        h1,
+        ul {
+            display: inline;
         }
 
-        /* ===== ORDER ===== */
-        function showOrder() {
-            document.getElementById("detail").style.display = "none";
-            document.getElementById("order").style.display = "block";
-
-            document.getElementById("oimg").src = selected.img;
-            document.getElementById("oname").innerText = selected.name;
-            document.getElementById("oprice").innerText = "₹" + selected.price;
+        ul {
+            margin-left: 60%;
         }
 
-        /* ===== WHATSAPP ===== */
-        function orderNow() {
-            const name = document.getElementById("name").value;
-            const phone = document.getElementById("phone").value;
-            const email = document.getElementById("email").value;
-
-            if (!name || !phone || !email) {
-                alert("Fill all fields!");
-                return;
-            }
-
-            const msg = `Order:%0AProduct: ${selected.name}%0APrice: ₹${selected.price}%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}`;
-
-            window.open(`https://api.whatsapp.com/send?phone=917339563621&text=${msg}`, "_blank");
+        li:hover {
+            color: white;
         }
 
-        /* ===== BACK ===== */
-        function backHome() {
-            document.getElementById("detail").style.display = "none";
-            document.getElementById("home").style.display = "grid";
+        li {
+            color: grey;
         }
 
-        function backDetail() {
-            document.getElementById("order").style.display = "none";
-            document.getElementById("detail").style.display = "block";
+        .logo {
+            background-color: black;
         }
 
-    </script>
+        .about {
+            text-align: center;
+            padding: 5px;
+        }
 
+        .top {
+            font-size: 45px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Hide checkbox */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Hamburger icon */
+        .menu-icon {
+            font-size: 20px;
+            padding: 15px;
+            cursor: pointer;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* Menu */
+        .menu {
+            display: none;
+            font-size: 20px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px;
+            color: black;
+            text-decoration: none;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        /* Show menu when clicked */
+        #menu-toggle:checked+.menu {
+            display: block;
+        }
+
+        .link {
+            align-items: center;
+
+        }
+    </style>
+    </head>
 </body>
 
 </html>
