@@ -2,14 +2,119 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0">
-    <title>Document</title>
-      <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+
+    <!-- ✅ FIXED -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Whey Protein</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f0f0f;
+            color: white;
+        }
+
+        .navbar {
+            background: #111;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* ===== GRID ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .product-card {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* ===== DETAIL ===== */
+        .product-detail {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 350px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .product-detail img {
+            width: 100%;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background: #ff6600;
+            border: none;
+            padding: 10px;
+            color: white;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00c853;
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
+
     <nav class="navbar">
         <h2>Whey Protein</h2>
     </nav>
@@ -43,64 +148,78 @@
             { name: "Whey 2", price: 1300, img: "img/whey2.jpg", desc: ["Premium whey", "Boost recovery", "Rich protein"] },
             { name: "Whey 3", price: 1400, img: "img/whey3.jpg", desc: ["Fast absorption", "Strength", "Delicious"] },
             { name: "Whey 4", price: 1500, img: "img/whey4.jpg", desc: ["Powerful", "Recovery", "Amino rich"] },
-            { name: "Whey 5", price: 1600, img: "img/whey5.jpg", desc: ["Tasty flavor", "Muscle support", "High protein"] },
-            { name: "Whey 6", price: 1700, img: "img/whey6.jpg", desc: ["Energy boost", "Recovery", "Premium"] },
-            { name: "Whey 7", price: 1800, img: "img/whey7.jpg", desc: ["Fast digest", "Strength", "Performance"] },
-            { name: "Whey 8", price: 1900, img: "img/whey8.jpg", desc: ["High quality", "Tasty", "Muscle gain"] },
-            { name: "Whey 9", price: 2000, img: "img/whey9.jpg", desc: ["Protein rich", "Boosts energy", "Recovery"] },
-            { name: "Whey 10", price: 2100, img: "img/whey10.jpg", desc: ["Premium whey", "Strength", "Fast absorption"] },
-            { name: "Whey 11", price: 2200, img: "img/whey11.jpg", desc: ["Muscle growth", "Recovery", "Energy"] },
-            { name: "Whey 12", price: 2300, img: "img/whey12.jpg", desc: ["High quality", "Tasty", "Performance"] },
-            { name: "Whey 13", price: 2400, img: "img/whey13.jpg", desc: ["Protein rich", "Muscle support", "Fast digest"] },
-            { name: "Whey 14", price: 2500, img: "img/whey14.jpg", desc: ["Premium whey", "Recovery", "Strength"] },
-            { name: "Whey 15", price: 2600, img: "img/whey15.jpg", desc: ["Tasty flavor", "Boost performance", "High protein"] },
-            { name: "Whey 16", price: 2700, img: "img/whey16.jpg", desc: ["Energy boost", "Muscle gain", "Recovery"] },
-            { name: "Whey 17", price: 2800, img: "img/whey17.jpg", desc: ["Fast absorption", "Strength", "Premium"] },
-            { name: "Whey 18", price: 2900, img: "img/whey18.jpg", desc: ["High quality", "Tasty", "Muscle support"] },
-            { name: "Whey 19", price: 3000, img: "img/whey19.jpg", desc: ["Protein rich", "Recovery", "Performance"] },
-            { name: "Whey 20", price: 3100, img: "img/whey20.jpg", desc: ["Premium whey", "Boost energy", "Fast digest"] }
+            { name: "Whey 5", price: 1600, img: "img/whey5.jpg", desc: ["Tasty flavor", "Muscle support", "High protein"] }
         ];
 
-        // Render grid
         const grid = document.getElementById("grid");
+
         products.forEach((p, i) => {
             const div = document.createElement("div");
             div.className = "product-card";
-            div.innerHTML = `<img src="${p.img}" alt="${p.name}"><h4>${p.name}</h4><p>₹${p.price}</p>`;
+            div.innerHTML = `
+                <img src="${p.img}">
+                <h4>${p.name}</h4>
+                <p>₹${p.price}</p>
+            `;
             div.onclick = () => showDetail(i);
             grid.appendChild(div);
         });
 
-        let currentProduct = null;
+        let currentProduct;
+
         function showDetail(i) {
             currentProduct = products[i];
-            document.getElementById("pimg").src = currentProduct.img;
-            document.getElementById("pname").innerText = currentProduct.name;
-            document.getElementById("pprice").innerText = "₹" + currentProduct.price;
+            document.getElementById("grid").style.display = "none";
+            document.getElementById("detail").style.display = "block";
+
+            pimg.src = currentProduct.img;
+            pname.innerText = currentProduct.name;
+            pprice.innerText = "₹" + currentProduct.price;
+
             const ul = document.getElementById("pdesc");
             ul.innerHTML = "";
-            currentProduct.desc.forEach(d => { const li = document.createElement("li"); li.innerText = d; ul.appendChild(li); });
-            grid.style.display = "none";
-            document.getElementById("detail").style.display = "block";
+            currentProduct.desc.forEach(d => {
+                const li = document.createElement("li");
+                li.innerText = d;
+                ul.appendChild(li);
+            });
         }
-        function backToGrid() { document.getElementById("detail").style.display = "none"; grid.style.display = "grid"; }
+
+        function backToGrid() {
+            detail.style.display = "none";
+            grid.style.display = "grid";
+        }
+
         function showOrder() {
-            document.getElementById("oimg").src = currentProduct.img;
-            document.getElementById("oname").innerText = currentProduct.name;
-            document.getElementById("oprice").innerText = "₹" + currentProduct.price;
-            document.getElementById("detail").style.display = "none";
-            document.getElementById("order").style.display = "block";
+            detail.style.display = "none";
+            order.style.display = "block";
+
+            oimg.src = currentProduct.img;
+            oname.innerText = currentProduct.name;
+            oprice.innerText = "₹" + currentProduct.price;
         }
-        function backToDetail() { document.getElementById("order").style.display = "none"; document.getElementById("detail").style.display = "block"; }
+
+        function backToDetail() {
+            order.style.display = "none";
+            detail.style.display = "block";
+        }
+
         function orderNow() {
-            const name = encodeURIComponent(document.getElementById("name").value.trim());
-            const phone = encodeURIComponent(document.getElementById("phone").value.trim());
-            const email = encodeURIComponent(document.getElementById("email").value.trim());
-            if (!name || !phone || !email) { alert("Please fill all fields!"); return; }
-            const msg = `Order:%0AProduct: ${encodeURIComponent(currentProduct.name)}%0APrice: ₹${currentProduct.price}%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}`;
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (!name || !phone || !email) {
+                alert("Fill all fields!");
+                return;
+            }
+
+            const msg = `Order:%0AProduct: ${currentProduct.name}%0APrice: ₹${currentProduct.price}%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}`;
+
             window.open(`https://api.whatsapp.com/send?phone=917339563621&text=${msg}`, "_blank");
         }
     </script>
+
 </body>
 
 </html>
